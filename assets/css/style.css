@@ -4213,3 +4213,11 @@ Invoice page
 .invoice .invoice-block {
 	text-align:right;
 }
+
+/*Custom CSS*/
+.loadingImage{
+  visibility: hidden;
+}
+
+
+
