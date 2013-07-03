@@ -37,7 +37,7 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
 
       var finalDate = new Date(year, month, day, timeArray[0], timeArray[1], 0, 0); 
 
-      console.log(finalDate);
+      
 
       var fileUploadControl = $("#profilePhotoFileUpload")[0];
       if (fileUploadControl.files.length > 0) {
