@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>StarLite | Artistas</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/css/metro.css" rel="stylesheet" />
+	<link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/css/style.css" rel="stylesheet" />
+	<link href="assets/css/style_responsive.css" rel="stylesheet" />
+	<link href="assets/css/style_default.css" rel="stylesheet" id="style_color" />
+	<link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css" />
+	<link rel="stylesheet" type="text/css" href="assets/chosen-bootstrap/chosen/chosen.css" />
+	<link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css" />
+	<link rel="shortcut icon" href="favicon.ico" />
+
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.8.min.js"></script>
+
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+	<!-- BEGIN HEADER -->
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+		<!-- BEGIN TOP NAVIGATION BAR -->
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<!-- BEGIN LOGO -->
+				<a class="brand" href="index.html">
+				<span>Starlite Festival</span>
+				</a>
+				<!-- END LOGO -->
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+				<img src="assets/img/menu-toggler.png" alt="" />
+				</a>          
+				<!-- END RESPONSIVE MENU TOGGLER -->				
+				<!-- BEGIN TOP NAVIGATION MENU -->					
+				
+				<!-- END TOP NAVIGATION MENU -->	
+			</div>
+		</div>
+		<!-- END TOP NAVIGATION BAR -->
+	</div>
+	<!-- END HEADER -->
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container row-fluid">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar nav-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<ul>
+				<li>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div class="sidebar-toggler hidden-phone"></div>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				</li>
+				
+				<li class="start">
+					<a href="index.html">
+					<i class="icon-home"></i> 
+					<span class="title">Escritorio</span>
+					</a>					
+				</li>
+				
+				
+				<li class="has-sub active">
+					<a href="javascript:;">
+					<i class="icon-group"></i> 
+					<span class="title">Artistas</span>
+					<span class="arrow open"></span>					
+					<span class="selected"></span>
+					</a>
+					<ul class="sub">
+						<li class="active"><a href="artist_list.html">Listado</a></li>
+						<li><a href="artist_detail.html">Crear artista</a></li>
+					</ul>
+				</li>
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			<!-- BEGIN PAGE CONTAINER-->			
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->		
+						<h3 class="page-title">
+							Artistas
+							<small>gestión</small>
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="index.html">Inicio</a> 
+								<span class="icon-angle-right"></span>
+							</li>
+							<li>
+								<a href="artist_list.html">Artistas</a>
+								<span class="icon-angle-right"></span>
+							</li>
+							<li>
+								<a href="artist_list.html">Listado</a>
+							</li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN EXAMPLE TABLE PORTLET-->
+						<div class="portlet box light-grey">
+							<div class="portlet-title">
+								<h4><i class="icon-reorder"></i>Artistas</h4>
+								<div class="tools">
+									<a href="javascript:;" class="collapse"></a>
+									<a href="javascript:;" class="reload"></a>
+								</div>
+							</div>
+							<div class="portlet-body">
+								<img src="assets/img/loading.gif" alt="cargando..." id="loadingPlaceholder" />
+								<div id="tablePlaceHolder" style="display: none;">
+								</div>
+							</div>
+						</div>
+						<!-- END EXAMPLE TABLE PORTLET-->
+					</div>
+				</div>
+				<!-- END PAGE CONTENT-->
+			</div>
+			<!-- END PAGE CONTAINER-->
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<div class="footer">
+		2013 &copy; Método White.
+		<div class="span pull-right">
+			<span class="go-top"><i class="icon-angle-up"></i></span>
+		</div>
+	</div>
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS -->
+	<!-- Load javascripts at bottom, this will reduce page load time -->
+	<script src="assets/js/jquery-1.8.3.min.js"></script>	
+	<script src="assets/breakpoints/breakpoints.js"></script>	
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>		
+	<script src="assets/js/jquery.blockui.js"></script>
+	<script src="assets/js/jquery.cookie.js"></script>
+	<!-- ie8 fixes -->
+	<!--[if lt IE 9]>
+	<script src="assets/js/excanvas.js"></script>
+	<script src="assets/js/respond.js"></script>
+	<![endif]-->	
+	<script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="assets/data-tables/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
+	<script src="assets/js/app.js"></script>		
+	<script type="text/javascript" src="assets/js/date.js"></script>
+	<script type="text/javascript" src="assets/js/app.artist_list.js"></script>
+	<script>
+	    jQuery(document).ready(function () {
+			// initiate layout and plugins
+			App.init();
+		});
+	</script>
+
+	
+</body>
+<!-- END BODY -->
+</html>
