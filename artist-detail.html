@@ -5,10 +5,11 @@
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <title>Metronic | Form Stuff - Form Layouts</title>
+   <title>Starlite | Gestión - Crear Artistas</title>
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="" name="description" />
    <meta content="" name="author" />
+   <link href="http://www.starlitefestival.com/templates/gk_music/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
    <link href="assets/css/metro.css" rel="stylesheet" />
    <link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
@@ -28,7 +29,6 @@
    <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css" />
    <link rel="stylesheet" type="text/css" href="assets/clockface/css/clockface.css" />
 
-   <link rel="shortcut icon" href="favicon.ico" />
    <script src="http://www.parsecdn.com/js/parse-1.2.8.min.js"></script>
 </head>
 <!-- END HEAD -->
@@ -109,7 +109,7 @@
                <div class="span12"> 
                   <h3 class="page-title">
                      Formulario Artistas
-                     <small>form layouts and more</small>
+                     <small>gestión contenidos</small>
                   </h3>
                   <ul class="breadcrumb">
                      <li>
@@ -134,16 +134,11 @@
                      <div class="portlet-title">
                         <h4>
                            <i class="icon-reorder hidden-320"></i>
-                           <span class="hidden-480">Form Layouts</span>
+                           <span class="hidden-480">Insertar datos - Todos los datos son obligatorios</span>
                            &nbsp;
                         </h4>
                      </div>
                      <div class="portlet-body form">
-                        <div class="tabbable portlet-tabs">
-                           <ul class="nav nav-tabs">
-                              <li><a href="#portlet_tab4" data-toggle="tab">Inline</a></li>
-                              <li class="active"><a href="#portlet_tab1" data-toggle="tab">Default</a></li>
-                           </ul>
                            <div class="tab-content">
                               <div class="tab-pane active" id="portlet_tab1">
                                  <!-- BEGIN FORM-->
@@ -152,21 +147,21 @@
                                        <label class="control-label">Nombre Artista</label>
                                        <div class="controls">
                                           <input type="text" placeholder="large" class="m-wrap large" id="txtName" required/>
-                                          <span class="help-inline">Some hint here</span>
+                                          
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">Lugar Evento</label>
                                        <div class="controls">
                                           <input type="text" placeholder="large" class="m-wrap large" id="txtPlace" required/>
-                                          <span class="help-inline">Some hint here</span>
+                                          
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">Enlace</label>
                                        <div class="controls">
                                           <input type="text" placeholder="large" class="m-wrap large" id="txtLink" required/>
-                                          <span class="help-inline">Some hint here</span>
+                                          
                                        </div>
                                     </div>
                                     <div class="control-group">
@@ -187,7 +182,7 @@
                                        <label class="control-label">Hora Evento</label>
                                        <div class="controls">
                                           <div class="input-append bootstrap-timepicker-component">
-                                             <input class="m-wrap m-ctrl-small timepicker-default" type="text" id="txtTime" required/>
+                                             <input class="m-wrap m-ctrl-small timepicker-24" type="text" id="txtTime"/>
                                              <span class="add-on"><i class="icon-time"></i></span>
                                           </div>
                                        </div>
@@ -199,17 +194,17 @@
                                        </div>
                                     </div>
                                     <div class="control-group">
-                                       <label class="control-label">Coordenadas Latitude</label>
+                                       <label class="control-label">Coordenadas - Latitud</label>
                                        <div class="controls">
                                           <input type="text" placeholder="large" class="m-wrap large" id="txtLat" required/>
-                                          <span class="help-inline">Some hint here</span>
+                                          <span class="help-inline">Insertar numeros divididos por punto</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
-                                       <label class="control-label">Coordenadas Longitude</label>
+                                       <label class="control-label">Coordenadas - Longitud</label>
                                        <div class="controls">
                                           <input type="text" placeholder="large" class="m-wrap large" id="txtLong" required/>
-                                          <span class="help-inline">Some hint here</span>
+                                          <span class="help-inline">Insertar numeros divididos por punto</span>
                                        </div>
                                     </div>
                                     
@@ -223,55 +218,7 @@
                                  <!-- END FORM-->  
                               </div>
                              
-                              
-                              <div class="tab-pane " id="portlet_tab4">
-                                 <h4>Login Form</h4>
-                                 <form action="#">
-                                    <input type="text" class="m-wrap" placeholder="Email" /><br />
-                                    <input type="password" class="m-wrap" placeholder="Password" />
-                                    <label class="checkbox">
-                                    <input type="checkbox" /> Remember me
-                                    </label>
-                                    <button type="submit" class="btn green">Sign in</button>
-                                 </form>
-                                 <hr />
-                                 <h4>Login Form</h4>
-                                 <form action="#">
-                                    <div class="input-icon left">
-                                       <i class="icon-envelope"></i>
-                                       <input type="text" class="m-wrap" placeholder="Email" />
-                                    </div>
-                                    <div class="input-icon left">                                          
-                                       <i class="icon-lock"></i>
-                                       <input type="password" class="m-wrap" placeholder="Password" />
-                                    </div>
-                                    <label class="checkbox">
-                                    <input type="checkbox" /> Remember me
-                                    </label>
-                                    <button type="submit" class="btn purple">Sign in</button>
-                                 </form>
-                                 <hr />
-                                 <form action="#">
-                                    <div class="input-prepend">                
-                                       <button class="btn blue">Login</button><input class="m-wrap" size="16" type="password" placeholder="Your Password" />
-                                    </div>
-                                 </form>
-                                 <h4>Search Form</h4>
-                                 <form action="#">
-                                    <div class="input-append hidden-phone">  
-                                       <input class="m-wrap medium" size="10" type="text" placeholder="Twitter Username" /><button class="btn red">Search</button><button class="btn black">Back</button>
-                                    </div>
-                                    <div class="input-append visible-phone">  
-                                       <input class="m-wrap" size="10" type="text" placeholder="Twitter Username" /><button class="btn red">Search</button><button class="btn black">Back</button>
-                                    </div>
-                                 </form>
-                                 <hr />
-                                 <form action="#" class="form-search">
-                                    <div class="input-append">
-                                       <input class="m-wrap" type="text" /><button class="btn green" type="button">Search!</button>
-                                    </div>
-                                 </form>
-                              </div>
+                           
                            </div>
                         </div>
                      </div>
@@ -318,64 +265,10 @@
    <script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script> 
    <script type="text/javascript" src="assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>  
    <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+   
+   <script type="text/javascript" src="assets/js/insert-artist.js"></script>
    <script src="assets/js/app.js"></script> 
-   <script type="text/javascript">
-    Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WLCK1LU8qKX9Riip67eSlwqb");
-    
 
-    $('#createArtist').click(function(){
-
-
-
-       
-      
-      var name = $("#txtName").val();
-      var link = $("#txtLink").val();
-      var desc = $("#txtDesc").val();
-      var place = $("#txtPlace").val();
-      var latitude = parseFloat($("#txtLat").val());
-      var longitude = parseFloat($("#txtLong").val());
-      var eventDate = $('#txtDate').val();
-      var eventTime = $('#txtTime').val();
-      var dateArray = eventDate.split('-');
-      var timeArray = eventTime.split(':');
-      var finalDate = new Date(dateArray[2], dateArray[1], dateArray[0], timeArray[0], parseInt(timeArray[1], 10), 0, 0);  
-      var point = new Parse.GeoPoint(latitude, longitude);
-
-      var fileUploadControl = $("#profilePhotoFileUpload")[0];
-      if (fileUploadControl.files.length > 0) {
-        var file = fileUploadControl.files[0];
-        var photoName = "photo.jpg";
-       
-        var parseFile = new Parse.File(photoName, file);
-      }
-
-      parseFile.save().then(function() {
-         
-         $('#createArtist').css('visibility', 'hidden');
-         $('.loadingImage').css('visibility', 'visible');
-
-         var ArtistObject = Parse.Object.extend("Artist");
-            var artistObject = new ArtistObject();
-
-            artistObject.save({name: name, place: place, description: desc, geoLocation: point, link: link, eventDate: finalDate, image: parseFile}, {
-              success: function(object) {
-
-                window.location.href = "success.html";
-              
-              },
-              error: function(model, error) {
-                  alert('No se han podido guardar los datos');
-            }
-
-           });
-
-      });
-
-    });
-
-    
-  </script>
    <script>
       jQuery(document).ready(function() { 
 
