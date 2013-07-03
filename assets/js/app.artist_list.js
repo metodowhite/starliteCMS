@@ -21,7 +21,7 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
 	                    var eventDate = object.attributes.eventDate ? object.attributes.eventDate.toString("dd-MM-yyyy") : '';
 	                    var eventHour = object.attributes.eventDate ? object.attributes.eventDate.toString("HH:mm") : '';
 	                    var place = object.attributes.place ? object.attributes.place : '';
-	                    var editAction = '<a href="artist_detail.html?id=' + object.id + '" class="btn mini purple"><i class="icon-edit"></i> Editar</a>';
+	                    //var editAction = '<a href="artist_detail.html?id=' + object.id + '" class="btn mini purple"><i class="icon-edit"></i> Editar</a>';
 	                    var deleteAction = '<a href="#delete" data-objectid="' + object.id + '" class="deleteRow btn mini black"><i class="icon-trash"></i> Eliminar</a>';
 
 	                    var element = [];
@@ -30,7 +30,8 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
 	                    element.push(eventDate);
 	                    element.push(eventHour);
 	                    element.push(place);
-	                    element.push(editAction + " " + deleteAction);
+	                    //element.push(editAction + " " + deleteAction);
+	                    element.push(deleteAction);
 	                    arr.push(element);
 	                });
 
