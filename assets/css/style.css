@@ -4220,4 +4220,16 @@ Invoice page
 }
 
 
+.firstColumn{
+  width: 180px;
+
+}
+.dateColumn{
+  width: 100px;
+}
+
+.placeColumn{
+  width: 140px;
+}
+
 

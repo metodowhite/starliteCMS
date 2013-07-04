@@ -17,20 +17,28 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
 
 	                collection.each(function (object) {
 	                    var image = object.attributes.image ? '<img src="' + object.attributes.image.url() + '" style="max-width: 150px;">' : '';
+	                    var description = object.attributes.description ? object.attributes.description : '';
 	                    var name = object.attributes.name ? object.attributes.name : '';
 	                    var eventDate = object.attributes.eventDate ? object.attributes.eventDate.toString("dd-MM-yyyy") : '';
 	                    var eventHour = object.attributes.eventDate ? object.attributes.eventDate.toString("HH:mm") : '';
-	                    var place = object.attributes.place ? object.attributes.place : '';
-	                    //var editAction = '<a href="artist_detail.html?id=' + object.id + '" class="btn mini purple"><i class="icon-edit"></i> Editar</a>';
-	                    var deleteAction = '<a href="#delete" data-objectid="' + object.id + '" class="deleteRow btn mini black"><i class="icon-trash"></i> Eliminar</a>';
 
+	                    var place = object.attributes.place ? object.attributes.place : '';
+	                    var geoLocation = object.attributes.geoLocation ? object.attributes.geoLocation : '';
+	                    
+	                    if (geoLocation) 
+	                    	place += '<br>' + 'Lat: ' + geoLocation.latitude + '<br> Long: ' + geoLocation.longitude;
+
+	                    var editAction = '<a href="artist_detail.html?id=' + object.id + '" class="btn mini purple"><i class="icon-edit"></i></a>';
+	                    var deleteAction = '<a href="#delete" data-objectid="' + object.id + '" class="deleteRow btn mini black"><i class="icon-trash"></i> </a>';
+	                    var link = object.attributes.link ? '<a href = "' + object.attributes.link + '">Visitar</a>' : '';
 	                    var element = [];
-	                    element.push(image);
-	                    element.push(name);
-	                    element.push(eventDate);
-	                    element.push(eventHour);
+	                    
+	                    element.push(name + '<br>' + image);
+	                    element.push(eventDate + '<br>' + eventHour);
 	                    element.push(place);
-	                    //element.push(editAction + " " + deleteAction);
+	                    element.push(description);
+	                    element.push(editAction + " " + deleteAction);
+	                    element.push(link);
 	                    element.push(deleteAction);
 	                    arr.push(element);
 	                });
@@ -45,11 +53,11 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
 					artistTable.dataTable( {
 						"aaData": arr,
 				        "aoColumns": [
-				            { "sTitle": "Imagen" },
-				            { "sTitle": "Nombre" },
-				            { "sTitle": "Fecha", "sClass": "hidden-phone" },
-				            { "sTitle": "Hora", "sClass": "hidden-phone" },
-				            { "sTitle": "Lugar", "sClass": "hidden-phone" },
+				            { "sTitle": "Nombre" , "sClass": "firstColumn" },
+				            { "sTitle": "Fecha", "sClass": "hidden-phone dateColumn" },
+				            { "sTitle": "Lugar", "sClass": "hidden-phone placeColumn" },
+				            { "sTitle": "Descripción" },
+				            { "sTitle": "Enlace"  },
 				            { "sTitle": "" }
 				        ],
 				        "aaSorting": [], // No initial sorting
