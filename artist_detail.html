@@ -135,27 +135,32 @@
                                        <label class="control-label">Nombre Artista</label>
                                        <div class="controls">
                                           <input type="text" placeholder="Ej: Julio Iglesias" class="m-wrap large" id="txtName" required/>
-                                          <span class="help-inline" id="spanName"></span>
+                                          <i class="icon-exclamation-sign" style="visibility:hidden"></i>
+                                          <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta el nombre</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">Lugar Evento</label>
                                        <div class="controls">
                                           <input type="text" placeholder="Ej: Palacio del deporte" class="m-wrap large" id="txtPlace" required/>
-                                          
+                                             <i class="icon-exclamation-sign" style="visibility:hidden"></i>
+                                             <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta el lugar del evento</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">Enlace</label>
                                        <div class="controls">
                                           <input type="text" placeholder="Link a la web de la compra online de entradas" class="m-wrap large" id="txtLink" required/>
-                                          
+                                          <i class="icon-exclamation-sign" style="visibility:hidden"></i>
+                                          <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta el link de la compra online de entradas</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">Descripción Evento</label>
                                        <div class="controls">
                                           <textarea class="large m-wrap" rows="3" id="txtDesc" required></textarea>
+                                          <i class="icon-exclamation-sign" style="visibility:hidden"></i>
+                                          <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta una descripción del evento</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
@@ -163,6 +168,8 @@
                                        <div class="controls">
                                           <div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                                              <input class="m-wrap m-ctrl-medium date-picker" size="16" type="text" value="" id="txtDate" required/><span class="add-on"><i class="icon-calendar"></i></span>
+                                             <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta la fecha del evento</span>
+                                             
                                           </div>
                                        </div>
                                     </div>
@@ -172,10 +179,12 @@
                                           <div class="input-append bootstrap-timepicker-component">
                                              <input class="m-wrap m-ctrl-small timepicker-24" type="text" id="txtTime"/>
                                              <span class="add-on"><i class="icon-time"></i></span>
+                                             <i class="icon-exclamation-sign" style="visibility:hidden"></i>
+                                             <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta la hora del evento</span>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="control-group">
+                                    <div id="imageDiv" class="control-group">
                                        <label class="control-label">Imagen</label>
                                        <div class="controls">
                                           <input type="file" id="profilePhotoFileUpload" class="default" required/>
@@ -185,14 +194,16 @@
                                        <label class="control-label">Coordenadas - Latitud</label>
                                        <div class="controls">
                                           <input type="text" placeholder="Ej: 40.1214563" class="m-wrap large" id="txtLat" required/>
-                                          <span class="help-inline">Insertar números divididos por punto</span>
+                                          <i class="icon-exclamation-sign" style="visibility:hidden"></i>
+                                          <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta  números divididos por punto</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">Coordenadas - Longitud</label>
                                        <div class="controls">
                                           <input type="text" placeholder="Ej: -3.1214563" class="m-wrap large" id="txtLong" required/>
-                                          <span class="help-inline">Insertar números divididos por punto</span>
+                                          <i class="icon-exclamation-sign" style="visibility:hidden"></i>
+                                          <span class="help-inline" style="color:#FF0000; visibility:hidden">Por favor inserta  números divididos por punto</span>
                                        </div>
                                     </div>
                                     

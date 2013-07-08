@@ -6,21 +6,101 @@ function createArtist(){
 
 	Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WLCK1LU8qKX9Riip67eSlwqb");
 
-	alert('estoy en crear artista');
+          var name = $("#txtName");
 
-          var name = $("#txtName").val();
-
-          if (name.length <= 0) {
-            $('#spanName').text('Debes insertar un nombre');
+          if (name.val().length <= 0) {
+            name.css('border', '1px solid red');
+            name.siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
           }
+
           var link = $("#txtLink").val();
+
+          if (link.length <= 0) {
+
+            $('#txtLink').css('border', '1px solid red');
+            $('#txtLink').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
           var desc = $("#txtDesc").val();
+
+          if (desc.length <= 0) {
+
+            $('#txtDesc').css('border', '1px solid red');
+            $('#txtDesc').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
           var place = $("#txtPlace").val();
+
+          if (place.length <= 0) {
+
+            $('#txtPlace').css('border', '1px solid red');
+            $('#txtPlace').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
           var latitude = parseFloat($("#txtLat").val());
+
+          if (latitude.length <= 0) {
+
+            $('#txtLat').css('border', '1px solid red');
+            $('#txtLat').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          } else if (!$.isNumeric(latitude)) {
+            $('#txtLat').css('border', '1px solid red');
+            $('#txtLat').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+          }
           var longitude = parseFloat($("#txtLong").val());
+
+          if (longitude.length <= 0) {
+
+            $('#txtLong').css('border', '1px solid red');
+            $('#txtLong').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          } else if (!$.isNumeric(latitude)) {
+            $('#txtLong').css('border', '1px solid red');
+            $('#txtLong').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+          }
+
+
           var eventDate = $('#txtDate').val();
+
+          if (eventDate.length <= 0) {
+
+            $('#txtDate').css('border', '1px solid red');
+            $('#txtDate').css('color', 'red');
+            
+            $('#txtDate').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+
           var eventTime = $('#txtTime').val();
-          if (name && link && desc && place && latitude && longitude && eventDate && eventDate) {
+
+          if (eventTime.length <= 0) {
+
+            $('#txtTime').css('border', '1px solid red');
+            $('#txtTime').css('color', 'red');
+            
+            $('#txtTime').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+
+          if (name && link && desc && place && latitude && longitude && eventDate && eventTime) {
 
           var timeArray = eventTime.split(':');
            
@@ -49,6 +129,7 @@ function createArtist(){
           
 
           var fileUploadControl = $("#profilePhotoFileUpload")[0];
+          
           if (fileUploadControl.files.length > 0) {
             var file = fileUploadControl.files[0];
             var photoName = "photo.jpg";

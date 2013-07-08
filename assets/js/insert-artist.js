@@ -13,7 +13,7 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
       $('#createArtist').click(function(e){
         
          
-        alert('button clicked');
+        
         
 
          if (!objectId) {
