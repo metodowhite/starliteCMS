@@ -57,8 +57,9 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
 				            { "sTitle": "Fecha", "sClass": "hidden-phone dateColumn" },
 				            { "sTitle": "Lugar", "sClass": "hidden-phone placeColumn" },
 				            { "sTitle": "Descripción" },
-				            { "sTitle": "Enlace"  },
-				            { "sTitle": "" }
+				            { "sTitle": "" },
+				            { "sTitle": "Enlace"  }
+				            
 				        ],
 				        "aaSorting": [], // No initial sorting
 						"sPaginationType": "bootstrap",
@@ -69,7 +70,7 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
 			                    "sNext": "Siguiente"
 			                }
 			            },
-			            "fnInitComplete": function(oSettings, json) {
+			            "fnDrawCallback": function(oSettings, json) {
 							loadingPlaceholder.fadeOut(function(){
 							    tablePlaceHolder.fadeIn();
 							});

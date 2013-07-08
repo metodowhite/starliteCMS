@@ -13,8 +13,6 @@ function initArtistList(){
 
 	if (objectId) {
 
-		console.log(objectId);
-
 		var ArtistObject = Parse.Object.extend("Artist");
 		var query = new Parse.Query(ArtistObject);
 
@@ -30,10 +28,8 @@ function initArtistList(){
 		    $("#txtLong").val(coord.longitude); 
 		    
 		    $("#txtPlace").val(artistObject.get('place')); 
-		    var eventDate =  artistObject.get('eventDate');
-		    console.log(eventDate);
-
-		    var artist = new ArtistObject();
+		    
+		    $('#createArtist').html('Editar');
 
 
 		  },

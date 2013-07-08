@@ -1,39 +1,47 @@
 
 
 
-function editArtist() {
+function updateArtist(objectId) {
 
 Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WLCK1LU8qKX9Riip67eSlwqb");
     
-    var getParameter = location.search.substring(1);
-    var arrObjectId = getParameter.split('=');
-    var objectId = arrObjectId[1];
-
     
-    if (objectId) {
+console.log("objectId:", objectId);
 
-    $('#createArtist').click(function(e){
-      
-      e.preventDefault();
+var Artist = Parse.Object.extend("Artist");
+var query = new Parse.Query(Artist);
 
+query.equalTo("objectId", objectId);
 
-      var name = $("#txtName").val();
-      var link = $("#txtLink").val();
-      var desc = $("#txtDesc").val();
-      var place = $("#txtPlace").val();
-      var latitude = parseFloat($("#txtLat").val());
-      var longitude = parseFloat($("#txtLong").val());
-      var eventDate = $('#txtDate').val();
-      var eventTime = $('#txtTime').val();
+query.first({
+  success: function(object) {
 
+    // Successfully retrieved the object.
+    
+    $('#createArtist').css('visibility', 'hidden');
+    $('.loadingImage').css('visibility', 'visible');
+    
+    console.log('success');
 
-      if (name && link && desc && place && latitude && longitude && eventDate && eventDate) {
+    var name = $("#txtName").val();
+    var link = $("#txtLink").val();
+    var desc = $("#txtDesc").val();
+    var place = $("#txtPlace").val();
+    var latitude = parseFloat($("#txtLat").val());
+    var longitude = parseFloat($("#txtLong").val());
+    var eventDate = $('#txtDate').val();
+    var eventTime = $('#txtTime').val();
 
-      var timeArray = eventTime.split(':');
-       
-      var point = new Parse.GeoPoint(latitude, longitude);
+    console.log(eventDate);
+    console.log(eventTime);
+    console.log(name);
+    console.log(link);
+    console.log(place);
+    console.log(desc);
+    console.log(latitude);
+    console.log(longitude);
 
-      if (eventDate.charAt(2)=='/') {
+    if (eventDate.charAt(2)=='/') {
 
         var dateArray = eventDate.split('/');
         
@@ -49,66 +57,78 @@ Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WL
         var day = dateArray[0];
         var year = dateArray[2];
 
-      };
-
-      var finalDate = new Date(year, month, day, timeArray[0], timeArray[1], 0, 0); 
-
-      
-
-      var fileUploadControl = $("#profilePhotoFileUpload")[0];
-      if (fileUploadControl.files.length > 0) {
-        var file = fileUploadControl.files[0];
-        var photoName = "photo.jpg";
-       
-        var parseFile = new Parse.File(photoName, file);
       }
 
-      parseFile.save().then(function() {
-         
-         $('#createArtist').css('visibility', 'hidden');
-         $('.loadingImage').css('visibility', 'visible');
+    console.log(month);
+    console.log(day);
+    console.log(year);
+    var timeArray = eventTime.split(':');
+    var finalDate = new Date(year, month, day, timeArray[0], timeArray[1], 0, 0); 
 
-         var ArtistObject = Parse.Object.extend("Artist");
-         
+    console.log(timeArray);
+    console.log(finalDate);
+  
 
-          var query = new Parse.Query(ArtistObject);
-          query.equalTo('objectId', objectId);
+    var point = new Parse.GeoPoint(latitude, longitude);
 
-          query.first({
-            success: function(object) {
-              // The object was retrieved successfully.
+    console.log(point);
+  
+    
+    var fileUploadControl = $("#profilePhotoFileUpload")[0];
 
-              alert('estoy en la query');
+    if (fileUploadControl.files.length > 0) {
+      var file = fileUploadControl.files[0];
+      var photoName = "photo.jpg";
+     
+      var parseFile = new Parse.File(photoName, file);
+    }
+    
+    parseFile.save().then(function(){
 
-              object.set('name', name);
-              object.set('description', desc);
-              object.set('link', link);
-              object.set('place', place);
-              object.set('image', parseFile);
-              object.set('eventDate', finalDate);
-              object.set('geoLocation', point);
-
-              object.save();
-              
-              window.location.href = "artist_list.html";
+      object.save(null, {
+        success: function (contact) {
 
 
+          console.log('secondo success');
+
+          contact.set("name", name);
+          contact.set("link", link);
+          contact.set("description", desc);
+          contact.set("place", place);
+          contact.set("geoLocation", point);
+          contact.set("eventDate", finalDate);
+          
+          contact.set("image", parseFile);
+
+          contact.save(null, {
+            
+            success: function(object){
+              console.log('llamado con exito: artista modificado');
+              window.location.href="artist_list.html";
             },
-            error: function(object, error) {
-              // The object was not retrieved successfully.
-              // error is a Parse.Error with an error code and description.
-               alert('No se ha podido recuperar el artista');
-          }
 
-       });
+            error: function(object, error){
+              console.log('no se ha podido modificar el artista');
+            }
 
+          });
+
+          
+
+        }
       });
 
-    }else{
-      alert('Debe Completar todos los datos');
-    }
     });
 
+    
+
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
   }
+
+
+});
+  
 
 }
