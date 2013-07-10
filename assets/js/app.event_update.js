@@ -23,9 +23,11 @@ query.first({
     
     console.log('success');
 
-    var name = $("#txtName").val();
+    var nameES = $("#txtNameES").val();
+    var nameEN = $("#txtNameEN").val();
     var link = $("#txtLink").val();
-    var desc = $("#txtDesc").val();
+    var descEN = $("#txtDescEN").val();
+    var descES = $("#txtDescES").val();
     var place = $("#txtPlace").val();
     var latitude = parseFloat($("#txtLat").val());
     var longitude = parseFloat($("#txtLong").val());
@@ -39,7 +41,7 @@ query.first({
     console.log(name);
     console.log(link);
     console.log(place);
-    console.log(desc);
+    
     console.log(latitude);
     console.log(longitude);
 
@@ -93,9 +95,11 @@ query.first({
 
           console.log('secondo success');
 
-          contact.set("name", name);
+          contact.set("name_es", nameES);
+          contact.set("name_en", nameEN);
           contact.set("link", link);
-          contact.set("description", desc);
+          contact.set("description_es", descES);
+          contact.set("description_en", descEN);
           contact.set("place", place);
           contact.set("geoLocation", point);
           contact.set("eventDate", finalDate);

@@ -16,9 +16,11 @@ function initEventList(){
 		  success: function(eventObject) {
 		    // The object was retrieved successfully.
 
-		    $("#txtName").val(eventObject.get('name'));
+		    $("#txtNameES").val(eventObject.get('name_es'));
+		    $("#txtNameEN").val(eventObject.get('name_en'));
 		    $("#txtLink").val(eventObject.get('link')); 
-		    $("#txtDesc").val(eventObject.get('description')); 
+		    $("#txtDescES").val(eventObject.get('description_es')); 
+		    $("#txtDescEN").val(eventObject.get('description_en')); 
 		    var coord =  eventObject.get('geoLocation');
 		    $("#txtLat").val(coord.latitude); 
 		    $("#txtLong").val(coord.longitude); 

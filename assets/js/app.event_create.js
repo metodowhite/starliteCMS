@@ -6,11 +6,19 @@ function createEvent(){
 
 	Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WLCK1LU8qKX9Riip67eSlwqb");
 
-          var name = $("#txtName").val();
+          var nameES = $("#txtNameES").val();
 
-          if (name.length <= 0) {
-            $("#txtName").css('border', '1px solid red');
-            $("#txtName").siblings().css('visibility', 'visible');
+          if (nameES.length <= 0) {
+            $("#txtNameES").css('border', '1px solid red');
+            $("#txtNameES").siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+          }
+
+          var nameEN = $("#txtNameEN").val();
+
+          if (nameEN.length <= 0) {
+            $("#txtNameEN").css('border', '1px solid red');
+            $("#txtNameEN").siblings().css('visibility', 'visible');
             $('.icon-exclamation-sign').css('color', 'red');
           }
 
@@ -24,16 +32,29 @@ function createEvent(){
             
 
           }
-          var desc = $("#txtDesc").val();
+          var descES = $("#txtDescES").val();
 
-          if (desc.length <= 0) {
+          if (descES.length <= 0) {
 
-            $('#txtDesc').css('border', '1px solid red');
-            $('#txtDesc').siblings().css('visibility', 'visible');
+            $('#txtDescES').css('border', '1px solid red');
+            $('#txtDescES').siblings().css('visibility', 'visible');
             $('.icon-exclamation-sign').css('color', 'red');
             
 
           }
+
+          var descEN = $("#txtDescEN").val();
+
+          if (descEN.length <= 0) {
+
+            $('#txtDescEN').css('border', '1px solid red');
+            $('#txtDescEN').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+
+
           var place = $("#txtPlace").val();
 
           if (place.length <= 0) {
@@ -104,7 +125,7 @@ function createEvent(){
           var type = getURLParameter('type');
 
 
-          if (name && link && desc && place && latitude && longitude && eventDate && eventTime && type) {
+          if (nameES && nameEN && link && descEN && descES && place && latitude && longitude && eventDate && eventTime && type) {
 
           var timeArray = eventTime.split(':');
            
@@ -149,7 +170,7 @@ function createEvent(){
              var EventObject = Parse.Object.extend("Event");
                 var eventObject = new EventObject();
 
-                eventObject.save({name: name, place: place, description: desc, geoLocation: point, link: link, eventDate: finalDate, image: parseFile, type: type}, {
+                eventObject.save({name_en: nameEN, name_es: nameES, place: place, description_es: descES,description_en: descEN, geoLocation: point, link: link, eventDate: finalDate, image: parseFile, type: type}, {
                   success: function(object) {
                     window.location.href = "event_list.html?type=" + type;
                   

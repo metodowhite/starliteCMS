@@ -23,8 +23,8 @@ function initEventList(){
 
 	                collection.each(function (object) {
 	                    var image = object.attributes.image ? '<img src="' + object.attributes.image.url() + '" style="max-width: 150px;">' : '';
-	                    var description = object.attributes.description ? object.attributes.description : '';
-	                    var name = object.attributes.name ? object.attributes.name : '';
+	                    var description_es = object.attributes.description_es ? object.attributes.description_es : '';
+	                    var name_es = object.attributes.name_es ? object.attributes.name_es : '';
 	                    var eventDate = object.attributes.eventDate ? object.attributes.eventDate.toString("dd-MM-yyyy") : '';
 	                    var eventHour = object.attributes.eventDate ? object.attributes.eventDate.toString("HH:mm") : '';
 
@@ -39,10 +39,10 @@ function initEventList(){
 	                    var link = object.attributes.link ? '<a href = "' + object.attributes.link + '">Visitar</a>' : '';
 	                    var element = [];
 	                    
-	                    element.push(name + '<br>' + image);
+	                    element.push(name_es  + '<br>' + image);
 	                    element.push(eventDate + '<br>' + eventHour);
 	                    element.push(place);
-	                    element.push(description);
+	                    element.push(description_es);
 	                    element.push(link);
 	                    element.push(editAction + " " + deleteAction);
 	                    arr.push(element);
