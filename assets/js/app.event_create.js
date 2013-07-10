@@ -162,7 +162,17 @@ function createEvent(){
             var parseFile = new Parse.File(photoName, file);
           }
 
+          var fileUploadControlMini = $("#profilePhotoFileUploadMini")[0];
+          
+          if (fileUploadControlMini.files.length > 0) {
+            var file = fileUploadControlMini.files[0];
+            var photoName = "photomini.jpg";
+           
+            var parseFileMini = new Parse.File(photoName, file);
+          }
+
           parseFile.save().then(function() {
+            parseFileMini.save().then(function() {
              
              $('#createEvent').css('visibility', 'hidden');
              $('.loadingImage').css('visibility', 'visible');
@@ -170,7 +180,7 @@ function createEvent(){
              var EventObject = Parse.Object.extend("Event");
                 var eventObject = new EventObject();
 
-                eventObject.save({name_en: nameEN, name_es: nameES, place: place, description_es: descES,description_en: descEN, geoLocation: point, link: link, eventDate: finalDate, image: parseFile, type: type}, {
+                eventObject.save({name_en: nameEN, name_es: nameES, place: place, description_es: descES,description_en: descEN, geoLocation: point, link: link, eventDate: finalDate, image: parseFile,image_th: parseFileMini, type: type}, {
                   success: function(object) {
                     window.location.href = "event_list.html?type=" + type;
                   
@@ -180,6 +190,8 @@ function createEvent(){
                 }
 
                });
+
+            });                
 
           });
 

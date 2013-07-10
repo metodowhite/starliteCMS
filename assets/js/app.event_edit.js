@@ -11,6 +11,7 @@ function initEventList(){
 
 		var EventObject = Parse.Object.extend("Event");
 		var query = new Parse.Query(EventObject);
+		console.log(query);
 
 		query.get(objectId, {
 		  success: function(eventObject) {
@@ -24,8 +25,23 @@ function initEventList(){
 		    var coord =  eventObject.get('geoLocation');
 		    $("#txtLat").val(coord.latitude); 
 		    $("#txtLong").val(coord.longitude); 
+		    $("#txtPlace").val(eventObject.get('place'));
+
+		    var date = eventObject.get('eventDate'); 
+		    console.log(date);
+		    var day = date.getUTCDate();
+		    var month = date.getUTCMonth() + 1;
+		    var year = date.getUTCFullYear();
+		    var hours = date.getHours();
+		    var minutes = date.getMinutes();
+		    if (minutes < 10) {
+
+		    	minutes = '0' + minutes;
+		    }
 		    
-		    $("#txtPlace").val(eventObject.get('place')); 
+
+		    $("#txtDate").val(day + "-" + month + "-" + year);
+		    $("#txtTime").val(hours+ ":" + minutes);
 
 		    var type = eventObject.get('type');
 		    $("#hiddenType").val(type);

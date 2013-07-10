@@ -86,8 +86,19 @@ query.first({
      
       var parseFile = new Parse.File(photoName, file);
     }
+
+    var fileUploadControlMini = $("#profilePhotoFileUploadMini")[0];
+          
+          if (fileUploadControlMini.files.length > 0) {
+            var file = fileUploadControlMini.files[0];
+            var photoName = "photomini.jpg";
+           
+            var parseFileMini = new Parse.File(photoName, file);
+    }
     
     parseFile.save().then(function(){
+
+      parseFileMini.save().then(function() {
 
       object.save(null, {
         success: function (contact) {
@@ -103,7 +114,7 @@ query.first({
           contact.set("place", place);
           contact.set("geoLocation", point);
           contact.set("eventDate", finalDate);
-          
+          contact.set("image_th", parseFileMini);
           contact.set("image", parseFile);
 
           contact.save(null, {
@@ -123,6 +134,8 @@ query.first({
 
         }
       });
+      });
+
 
     });
 
