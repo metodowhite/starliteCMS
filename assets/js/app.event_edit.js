@@ -26,6 +26,10 @@ function initEventList(){
 		    $("#txtLat").val(coord.latitude); 
 		    $("#txtLong").val(coord.longitude); 
 		    $("#txtPlace").val(eventObject.get('place'));
+		    $('#profilePhoto').css('display', 'inline');
+		    $('#profilePhoto').attr('src', eventObject.get('image').url());
+		    $('#profilePhotoMini').css('display', 'inline');
+		    $('#profilePhotoMini').attr('src', eventObject.get('image_th').url());
 
 		    var date = eventObject.get('eventDate'); 
 		    console.log(date);

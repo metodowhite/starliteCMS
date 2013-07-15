@@ -171,6 +171,8 @@ function createEvent(){
             var parseFileMini = new Parse.File(photoName, file);
           }
 
+          if (parseFile && parseFileMini) {
+
           parseFile.save().then(function() {
             parseFileMini.save().then(function() {
              
@@ -194,6 +196,10 @@ function createEvent(){
             });                
 
           });
+        }
+        else{
+          alert('Por favor inserte las imágenes');
+        }
 
         }else{
           alert('Debe Completar todos los datos');
@@ -212,4 +218,6 @@ function getURLParameter(sParam){
         }
     }
 }
+
+
 

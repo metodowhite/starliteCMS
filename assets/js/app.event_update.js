@@ -24,26 +24,124 @@ query.first({
     console.log('success');
 
     var nameES = $("#txtNameES").val();
+
+    if (nameES.length <= 0) {
+            $("#txtNameES").css('border', '1px solid red');
+            $("#txtNameES").siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+    }
+
     var nameEN = $("#txtNameEN").val();
+
+    if (nameEN.length <= 0) {
+            $("#txtNameEN").css('border', '1px solid red');
+            $("#txtNameEN").siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+    }
+
+
     var link = $("#txtLink").val();
-    var descEN = $("#txtDescEN").val();
+
+    if (link.length <= 0) {
+
+            $('#txtLink').css('border', '1px solid red');
+            $('#txtLink').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+      }
+
     var descES = $("#txtDescES").val();
-    var place = $("#txtPlace").val();
-    var latitude = parseFloat($("#txtLat").val());
-    var longitude = parseFloat($("#txtLong").val());
-    var eventDate = $('#txtDate').val();
-    var eventTime = $('#txtTime').val();
+
+          if (descES.length <= 0) {
+
+            $('#txtDescES').css('border', '1px solid red');
+            $('#txtDescES').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+
+          var descEN = $("#txtDescEN").val();
+
+          if (descEN.length <= 0) {
+
+            $('#txtDescEN').css('border', '1px solid red');
+            $('#txtDescEN').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+
+
+          var place = $("#txtPlace").val();
+
+          if (place.length <= 0) {
+
+            $('#txtPlace').css('border', '1px solid red');
+            $('#txtPlace').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+          var latitude = parseFloat($("#txtLat").val());
+
+          if (latitude.length <= 0) {
+
+            $('#txtLat').css('border', '1px solid red');
+            $('#txtLat').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          } else if (!$.isNumeric(latitude)) {
+            $('#txtLat').css('border', '1px solid red');
+            $('#txtLat').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+          }
+          var longitude = parseFloat($("#txtLong").val());
+
+          if (longitude.length <= 0) {
+
+            $('#txtLong').css('border', '1px solid red');
+            $('#txtLong').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          } else if (!$.isNumeric(latitude)) {
+            $('#txtLong').css('border', '1px solid red');
+            $('#txtLong').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+          }
+
+
+          var eventDate = $('#txtDate').val();
+
+          if (eventDate.length <= 0) {
+
+            $('#txtDate').css('border', '1px solid red');
+            $('#txtDate').css('color', 'red');
+            
+            $('#txtDate').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+
+          var eventTime = $('#txtTime').val();
+
+          if (eventTime.length <= 0) {
+
+            $('#txtTime').css('border', '1px solid red');
+            $('#txtTime').css('color', 'red');
+            
+            $('#txtTime').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
     var type = $("#hiddenType").val();
 
 
-    console.log(eventDate);
-    console.log(eventTime);
-    console.log(name);
-    console.log(link);
-    console.log(place);
-    
-    console.log(latitude);
-    console.log(longitude);
 
     if (eventDate.charAt(2)=='/') {
 
@@ -63,19 +161,16 @@ query.first({
 
       }
 
-    console.log(month);
-    console.log(day);
-    console.log(year);
+    
     var timeArray = eventTime.split(':');
     var finalDate = new Date(year, month, day, timeArray[0], timeArray[1], 0, 0); 
 
-    console.log(timeArray);
-    console.log(finalDate);
+  
   
 
     var point = new Parse.GeoPoint(latitude, longitude);
 
-    console.log(point);
+
   
     
     var fileUploadControl = $("#profilePhotoFileUpload")[0];
@@ -95,49 +190,21 @@ query.first({
            
             var parseFileMini = new Parse.File(photoName, file);
     }
-    
-    parseFile.save().then(function(){
 
-      parseFileMini.save().then(function() {
-
-      object.save(null, {
-        success: function (contact) {
-
-
-          console.log('secondo success');
-
-          contact.set("name_es", nameES);
-          contact.set("name_en", nameEN);
-          contact.set("link", link);
-          contact.set("description_es", descES);
-          contact.set("description_en", descEN);
-          contact.set("place", place);
-          contact.set("geoLocation", point);
-          contact.set("eventDate", finalDate);
-          contact.set("image_th", parseFileMini);
-          contact.set("image", parseFile);
-
-          contact.save(null, {
-            
-            success: function(object){
-              console.log('llamado con exito: evento modificado');
-              window.location.href="event_list.html?type=" + type;
-            },
-
-            error: function(object, error){
-              console.log('no se ha podido modificar el evento');
-            }
-
+    if (parseFile){
+      parseFile.save().then(function(){
+        if (parseFileMini) {
+          parseFileMini.save().then(function() {
+              saveObject(object,type, nameES, nameEN, link, descES, descEN, place, point, finalDate, parseFileMini, parseFile);
           });
-
-          
-
+        }else{
+          saveObject(object,type, nameES, nameEN, link, descES, descEN, place, point, finalDate, null, parseFile);
         }
       });
-      });
 
-
-    });
+    }else{
+      saveObject(object, type, nameES, nameEN, link, descES, descEN, place, point, finalDate, null, null);
+    }
 
     
 
@@ -148,7 +215,50 @@ query.first({
 
 
 });
+
+
   
+
+}
+
+
+function saveObject(object, type, nameES, nameEN, link, descES, descEN, place, point, finalDate, parseFileMini, parseFile){
+
+
+  object.save(null, {
+    success: function (contact) {
+
+
+      console.log('secondo success');
+
+      contact.set("name_es", nameES);
+      contact.set("name_en", nameEN);
+      contact.set("link", link);
+      contact.set("description_es", descES);
+      contact.set("description_en", descEN);
+      contact.set("place", place);
+      contact.set("geoLocation", point);
+      contact.set("eventDate", finalDate);
+      if (parseFileMini) 
+        contact.set("image_th", parseFileMini);
+      if (parseFile)
+        contact.set("image", parseFile);
+
+      contact.save(null, {
+
+        success: function(object){
+          console.log('llamado con exito: evento modificado');
+          window.location.href="event_list.html?type=" + type;
+        },
+
+        error: function(object, error){
+          console.log('no se ha podido modificar el evento');
+        }
+
+      });
+
+    }
+  });
 
 }
 
