@@ -14,16 +14,28 @@ function createArtist(){
             $('.icon-exclamation-sign').css('color', 'red');
           }
 
-          var link = $("#txtLink").val();
+          var link_es = $("#txtLinkES").val();
 
-          if (link.length <= 0) {
+          if (link_es.length <= 0) {
 
-            $('#txtLink').css('border', '1px solid red');
-            $('#txtLink').siblings().css('visibility', 'visible');
+            $('#txtLinkES').css('border', '1px solid red');
+            $('#txtLinkES').siblings().css('visibility', 'visible');
             $('.icon-exclamation-sign').css('color', 'red');
             
 
           }
+
+          var link_en = $("#txtLinkEN").val();
+
+          if (link_en.length <= 0) {
+
+            $('#txtLinkEN').css('border', '1px solid red');
+            $('#txtLinkEN').siblings().css('visibility', 'visible');
+            $('.icon-exclamation-sign').css('color', 'red');
+            
+
+          }
+
           var desc = $("#txtDesc").val();
 
           if (desc.length <= 0) {
@@ -100,7 +112,7 @@ function createArtist(){
 
           }
 
-          if (name && link && desc && place && latitude && longitude && eventDate && eventTime) {
+          if (name && link_en && link_es && desc && place && latitude && longitude && eventDate && eventTime) {
 
           var timeArray = eventTime.split(':');
            
@@ -145,7 +157,7 @@ function createArtist(){
              var ArtistObject = Parse.Object.extend("Artist");
                 var artistObject = new ArtistObject();
 
-                artistObject.save({name: name, place: place, description: desc, geoLocation: point, link: link, eventDate: finalDate, image: parseFile}, {
+                artistObject.save({name: name, place: place, description: desc, geoLocation: point, link_en: link_en, link_es: link_es, eventDate: finalDate, image: parseFile}, {
                   success: function(object) {
 
                    alert('estoy en update 1');

@@ -6,6 +6,10 @@ function createEvent(){
 
 	Parse.initialize("rsHSnes1jOsyo41HrTUrJsMVWinxjc3d39BEt2Ot", "L0tuiwffSYyPomR5WLCK1LU8qKX9Riip67eSlwqb");
 
+        alert('Se están subiendo las imagenes. Esto puede tardar un poco según el tamaño ');
+        $('#createEvent').css('visibility', 'hidden');
+        $('.loadingImage').css('visibility', 'visible');
+
           var nameES = $("#txtNameES").val();
 
           if (nameES.length <= 0) {
@@ -22,16 +26,10 @@ function createEvent(){
             $('.icon-exclamation-sign').css('color', 'red');
           }
 
-          var link = $("#txtLink").val();
+          var link = $("#txtLinkES").val();
+          var link_en = $("#txtLinkEN").val();
 
-          if (link.length <= 0) {
-
-            $('#txtLink').css('border', '1px solid red');
-            $('#txtLink').siblings().css('visibility', 'visible');
-            $('.icon-exclamation-sign').css('color', 'red');
-            
-
-          }
+          
           var descES = $("#txtDescES").val();
 
           if (descES.length <= 0) {
@@ -125,7 +123,7 @@ function createEvent(){
           var type = getURLParameter('type');
 
 
-          if (nameES && nameEN && link && descEN && descES && place && latitude && longitude && eventDate && eventTime && type) {
+          if (nameES && nameEN  && descEN && descES && place && latitude && longitude && eventDate && eventTime && type) {
 
           var timeArray = eventTime.split(':');
            
@@ -165,10 +163,10 @@ function createEvent(){
           var fileUploadControlMini = $("#profilePhotoFileUploadMini")[0];
           
           if (fileUploadControlMini.files.length > 0) {
-            var file = fileUploadControlMini.files[0];
-            var photoName = "photomini.jpg";
+            var file2 = fileUploadControlMini.files[0];
+            var photoName2 = "photomini.jpg";
            
-            var parseFileMini = new Parse.File(photoName, file);
+            var parseFileMini = new Parse.File(photoName2, file2);
           }
 
           if (parseFile && parseFileMini) {
@@ -176,13 +174,12 @@ function createEvent(){
           parseFile.save().then(function() {
             parseFileMini.save().then(function() {
              
-             $('#createEvent').css('visibility', 'hidden');
-             $('.loadingImage').css('visibility', 'visible');
+             
 
              var EventObject = Parse.Object.extend("Event");
                 var eventObject = new EventObject();
 
-                eventObject.save({name_en: nameEN, name_es: nameES, place: place, description_es: descES,description_en: descEN, geoLocation: point, link: link, eventDate: finalDate, image: parseFile,image_th: parseFileMini, type: type}, {
+                eventObject.save({name_en: nameEN, name_es: nameES, place: place, description_es: descES,description_en: descEN, geoLocation: point, link: link, link_en: link_en, eventDate: finalDate, image: parseFile, image_th: parseFileMini, type: type}, {
                   success: function(object) {
                     window.location.href = "event_list.html?type=" + type;
                   
@@ -202,7 +199,7 @@ function createEvent(){
         }
 
         }else{
-          alert('Debe Completar todos los datos');
+          alert('Debe completar todos los campos obligatorios');
         }
 }
 

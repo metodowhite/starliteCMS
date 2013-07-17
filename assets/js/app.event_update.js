@@ -18,8 +18,7 @@ query.first({
 
     // Successfully retrieved the object.
     
-    $('#createEvent').css('visibility', 'hidden');
-    $('.loadingImage').css('visibility', 'visible');
+    
     
     console.log('success');
 
@@ -29,6 +28,7 @@ query.first({
             $("#txtNameES").css('border', '1px solid red');
             $("#txtNameES").siblings().css('visibility', 'visible');
             $('.icon-exclamation-sign').css('color', 'red');
+            
     }
 
     var nameEN = $("#txtNameEN").val();
@@ -37,19 +37,15 @@ query.first({
             $("#txtNameEN").css('border', '1px solid red');
             $("#txtNameEN").siblings().css('visibility', 'visible');
             $('.icon-exclamation-sign').css('color', 'red');
+            
     }
 
 
-    var link = $("#txtLink").val();
+    
+    var link = $("#txtLinkES").val();
+    var link_en = $("#txtLinkEN").val();
 
-    if (link.length <= 0) {
-
-            $('#txtLink').css('border', '1px solid red');
-            $('#txtLink').siblings().css('visibility', 'visible');
-            $('.icon-exclamation-sign').css('color', 'red');
-            
-
-      }
+    
 
     var descES = $("#txtDescES").val();
 
@@ -97,6 +93,7 @@ query.first({
             $('#txtLat').css('border', '1px solid red');
             $('#txtLat').siblings().css('visibility', 'visible');
             $('.icon-exclamation-sign').css('color', 'red');
+
           }
           var longitude = parseFloat($("#txtLong").val());
 
@@ -115,6 +112,7 @@ query.first({
 
 
           var eventDate = $('#txtDate').val();
+          console.log('eventDate: ' + eventDate);
 
           if (eventDate.length <= 0) {
 
@@ -137,7 +135,7 @@ query.first({
             $('#txtTime').siblings().css('visibility', 'visible');
             $('.icon-exclamation-sign').css('color', 'red');
             
-
+            
           }
     var type = $("#hiddenType").val();
 
@@ -151,8 +149,8 @@ query.first({
         var day = dateArray[1];
         var year = dateArray[2];
 
-      } else if (eventDate.charAt(2)=='-') {
-
+      } else if ((eventDate.charAt(2)=='-') || (eventDate.charAt(1)=='-')) {
+        
         var dateArray = eventDate.split('-');
 
         var month = dateArray[1] - 1; 
@@ -191,21 +189,44 @@ query.first({
             var parseFileMini = new Parse.File(photoName, file);
     }
 
-    if (parseFile){
-      parseFile.save().then(function(){
-        if (parseFileMini) {
-          parseFileMini.save().then(function() {
-              saveObject(object,type, nameES, nameEN, link, descES, descEN, place, point, finalDate, parseFileMini, parseFile);
+    if (nameES && nameEN && descES && descEN  && place && point && finalDate) {
+      
+      // if (parseFile){
+      //   parseFile.save().then(function(){
+      //     if (parseFileMini) {
+      //       parseFileMini.save().then(function() {
+      //           saveObject(object,type, nameES, nameEN, link, descES, descEN, place, point, finalDate, parseFileMini, parseFile);
+      //       });
+      //     }else{
+      //       saveObject(object,type, nameES, nameEN, link, descES, descEN, place, point, finalDate, null, parseFile);
+      //     }
+      //   });
+
+      // }else{
+      //   saveObject(object, type, nameES, nameEN, link, descES, descEN, place, point, finalDate, null, null);
+      // }
+
+      if (parseFile  && parseFileMini) {
+        parseFile.save().then(function(){
+          parseFileMini.save().then(function(){
+            saveObject(object,type, nameES, nameEN, link, link_en, descES, descEN, place, point, finalDate, parseFileMini, parseFile);
           });
-        }else{
-          saveObject(object,type, nameES, nameEN, link, descES, descEN, place, point, finalDate, null, parseFile);
-        }
-      });
+        });
+      }else if (parseFile) {
+        parseFile.save().then(function(){
+          saveObject(object,type, nameES, nameEN, link, link_en, descES, descEN, place, point, finalDate, null, parseFile);
+        });
+      }else if (parseFileMini) {
+        parseFileMini.save().then(function(){
+          saveObject(object,type, nameES, nameEN, link, link_en, descES, descEN, place, point, finalDate, parseFileMini, null);
+        });
+      }else{
+        saveObject(object, type, nameES, nameEN, link, link_en, descES, descEN, place, point, finalDate, null, null);
 
+      }
     }else{
-      saveObject(object, type, nameES, nameEN, link, descES, descEN, place, point, finalDate, null, null);
+      alert('debe rellenar todos los campos');
     }
-
     
 
   },
@@ -222,28 +243,35 @@ query.first({
 }
 
 
-function saveObject(object, type, nameES, nameEN, link, descES, descEN, place, point, finalDate, parseFileMini, parseFile){
+function saveObject(object, type, nameES, nameEN, link, link_en, descES, descEN, place, point, finalDate, parseFileMini, parseFile){
 
 
   object.save(null, {
     success: function (contact) {
 
 
-      console.log('secondo success');
+    $('#createEvent').css('visibility', 'hidden');
+    $('.loadingImage').css('visibility', 'visible');
+      
 
       contact.set("name_es", nameES);
       contact.set("name_en", nameEN);
       contact.set("link", link);
+      contact.set("link_en", link_en);
       contact.set("description_es", descES);
       contact.set("description_en", descEN);
       contact.set("place", place);
       contact.set("geoLocation", point);
       contact.set("eventDate", finalDate);
-      if (parseFileMini) 
+      if (parseFileMini != null){ 
+        
         contact.set("image_th", parseFileMini);
-      if (parseFile)
+            
+      }
+      if (parseFile != null){
         contact.set("image", parseFile);
-
+        
+      }
       contact.save(null, {
 
         success: function(object){
@@ -253,6 +281,7 @@ function saveObject(object, type, nameES, nameEN, link, descES, descEN, place, p
 
         error: function(object, error){
           console.log('no se ha podido modificar el evento');
+          console.log(error);
         }
 
       });

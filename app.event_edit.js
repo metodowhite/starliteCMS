@@ -19,25 +19,21 @@ function initEventList(){
 
 		    $("#txtNameES").val(eventObject.get('name_es'));
 		    $("#txtNameEN").val(eventObject.get('name_en'));
-		    $("#txtLinkES").val(eventObject.get('link')); 
-		    $("#txtLinkEN").val(eventObject.get('link_en')); 
+		    $("#txtLink").val(eventObject.get('link')); 
 		    $("#txtDescES").val(eventObject.get('description_es')); 
 		    $("#txtDescEN").val(eventObject.get('description_en')); 
 		    var coord =  eventObject.get('geoLocation');
 		    $("#txtLat").val(coord.latitude); 
 		    $("#txtLong").val(coord.longitude); 
 		    $("#txtPlace").val(eventObject.get('place'));
-		    
-		    if (eventObject.get('image')) {
-		    	$('#profilePhoto').css('display', 'inline');
-		    	$('#profilePhoto').attr('src', eventObject.get('image').url());
-			}
-		    if (eventObject.get('image_th')) {
-		    	$('#profilePhotoMini').css('display', 'inline');
+		    $('#profilePhoto').css('display', 'inline');
+		    $('#profilePhoto').attr('src', eventObject.get('image').url());
+		    $('#profilePhotoMini').css('display', 'inline');
+
+		    var image_thUrl = eventObject.get('image_th').url();
+		    if (image_thUrl) 
 		    	$('#profilePhotoMini').attr('src', eventObject.get('image_th').url());
-		    }
-		    
-		    
+
 		    var date = eventObject.get('eventDate'); 
 		    console.log(date);
 		    var day = date.getUTCDate();
@@ -48,13 +44,6 @@ function initEventList(){
 		    if (minutes < 10) {
 
 		    	minutes = '0' + minutes;
-		    }
-
-		    if (day<10) {
-		    	day = '0' + day;
-		    }
-		    if (month<10) {
-		    	month = '0' + month;
 		    }
 		    
 

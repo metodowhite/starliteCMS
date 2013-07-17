@@ -36,14 +36,15 @@ function initEventList(){
 
 	                    var editAction = '<a href="event_detail.html?id=' + object.id + '" class="btn mini purple"><i class="icon-edit"></i></a>';
 	                    var deleteAction = '<a href="#delete" data-objectid="' + object.id + '" class="deleteRow btn mini black"><i class="icon-trash"></i></a>';
-	                    var link = object.attributes.link ? '<a href = "' + object.attributes.link + '">Visitar</a>' : '';
+	                    var link = object.attributes.link ? '<a href = "' + object.attributes.link + '">Visitar ES</a>' : '';
+	                    var link_en = object.attributes.link ? '<a href = "' + object.attributes.link_en + '">Visitar EN</a>' : '';
 	                    var element = [];
 	                    
 	                    element.push(name_es  + '<br>' + image);
 	                    element.push(eventDate + '<br>' + eventHour);
 	                    element.push(place);
 	                    element.push(description_es);
-	                    element.push(link);
+	                    element.push(link + '<br>' + link_en);
 	                    element.push(editAction + " " + deleteAction);
 	                    arr.push(element);
 	                });
